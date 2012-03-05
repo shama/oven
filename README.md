@@ -2,7 +2,7 @@
 
 A CakePHP 2 Re-Baker and CMS Plugin
 
-## BETA
+## BETA / WARNING
 
 Oven is currently in **beta**. I would like to get the community's opinion and input
 on this project. Open an issue, find me on
@@ -10,6 +10,10 @@ on this project. Open an issue, find me on
 
 This means functionality will change and this plugin may *destroy your code*. You
 have been warned.
+
+## WHAT IS THIS?
+
+
 
 ## One Line Install (requires git)
 
@@ -25,19 +29,19 @@ If you used the one line install above then you can skip this. If you downloaded
 and included Oven yourself then run the following command to have Oven init your
 app for you:
 
-    ./Console/cake Oven.init
+    ./Console/cake oven.init
 
 ### Recipe Bake
 
 Oven uses `Config/oven.json` as a recipe to build your app. After making edits
 to your recipe, run the command:
 
-    ./Console/cake Oven.bake
+    ./Console/cake oven.bake
 
 If you want Oven to continously watch for changes to your recipe then run the
 command:
 
-    ./Console/cake Oven.watch
+    ./Console/cake oven.watch
 
 ### Merge Classes
 
@@ -46,7 +50,7 @@ into an array. Once a class is represented as an array the fun begins as we can
 now manipulate the file just like an array. With this we easily can merge two
 classes with the command:
 
-    ./Console/cake Oven.merge Controller/CommentsController Controller/NewCommentsController
+    ./Console/cake oven.merge Controller/CommentsController Controller/NewCommentsController
 
 Will merge properties and methods from CommentsController into
 NewCommentsController. Any conflicts will use the second stated class.
@@ -62,6 +66,7 @@ More info on this to come.
 
 ## Wishlist
 
+* Make a video walking through Oven
 * Instructions/help for creating your own field types
 * Instructions/help for using different view types
 * Detect if existing CakePHP with install.sh
