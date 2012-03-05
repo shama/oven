@@ -1,0 +1,33 @@
+{
+	"recipe": {
+		"pages": {
+			"schema": {
+				"title": {
+					"help": "Enter the title of the page.",
+					"validate": "notEmpty"
+				},
+				"body": {
+					"type": "ckeditor"
+				},
+				"slug": {
+					"type": "slug"
+				}
+			}
+		}
+	},
+	"config": {
+		"title": "CMS",
+		"footer": "Copyright 2012 Your Name Here",
+		"docblock_header": {
+			"package": "cms",
+			"author": "Your Name <your@email.com>",
+			"copyright": "Copyright 2012 Your Name"
+		},
+		"nav": [
+			"pages"
+		]
+	},
+	"oven": {
+		"clean_tables": true
+	}
+}
