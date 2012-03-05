@@ -34,16 +34,6 @@ class BasesController extends OvenAppController {
 	);
 
 /**
- * __construct
- * @param object $request
- * @param object $response
- */
-	public function __construct($request = null, $response = null) {
-		parent::__construct($request, $response);
-		$this->_setupPaths();
-	}
-
-/**
  * beforeFilter
  */
 	function beforeFilter() {
@@ -104,33 +94,21 @@ class BasesController extends OvenAppController {
 	}
 
 /**
- * _setupPaths
- */
-	protected function _setupPaths() {
-		//$this->viewPath = 'Bases';
-	}
-	
-/**
- * render
- * Override render() to use plugin view if custom view does not exist.
+ * Override render() to use plugin views if custom view does not exist.
+ *
  * @param type $view
  * @param type $layout
  */
 	public function render($view = null, $layout = null) {
-		//return parent::render($view, $layout);
-		
-		// DEFAULT LAYOUT
 		if (is_null($layout)) {
 			$layout = $this->layout;
 		}
-		if (empty($layout)) {
-			$layout = 'default';
+		if (empty($layout) || $layout == 'default') {
+			$layout = 'oven';
 		}
 		if (!file_exists(APP . 'View' . DS . 'Layouts' . DS . $layout . '.ctp')) {
 			$this->plugin = 'Oven';
 		}
-		
-		// DEFAULT VIEW
 		if (is_null($view)) {
 			$view = $this->action;
 		}
@@ -139,7 +117,6 @@ class BasesController extends OvenAppController {
 				$this->viewPath = 'Bases';
 			}
 		}
-		
 		return parent::render($view, $layout);
 	}
 }

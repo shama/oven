@@ -73,7 +73,8 @@ echo "Installing Oven..." >&2
 git clone git://github.com/shama/oven.git $pwd/app/Plugin/Oven
 
 # TODO: Check for recipe
-# TODO: Run Oven.init with recipe
+# TODO: Enable plugin
+# TODO: Run oven.init with recipe
 
 echo "" >&2
 echo "Ding! Oven is ready." >&2
