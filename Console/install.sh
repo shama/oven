@@ -51,7 +51,7 @@ else
 fi
 
 # install folder empty?
-if [ "$(ls -A $pwd)" ]; then
+if [ "$(ls -A $pwd | grep -v oven-install-*)" ]; then
   echo "There appears to be files in [$pwd]." >&2
   echo "Please install Oven into an empty folder." >&2
   echo "" >&2
@@ -65,7 +65,9 @@ if [ $ret -eq 0 ]; then
   (exit 0)
 else
   echo "Installing CakePHP 2..." >&2
-  git clone git://github.com/cakephp/cakephp.git $pwd
+  git clone git://github.com/cakephp/cakephp.git $pwd/.oven
+  mv .oven/* .
+  rm -rf .oven
 fi
 
 # Install Oven
@@ -73,8 +75,11 @@ echo "Installing Oven..." >&2
 git clone git://github.com/shama/oven.git $pwd/app/Plugin/Oven
 
 # TODO: Check for recipe
-# TODO: Enable plugin
-# TODO: Run oven.init with recipe
+
+# Init Oven
+echo "\nCakePlugin::load('Oven');" >> $pwd/app/Config/bootstrap.php
+cd $pwd/app
+./Console/cake oven.init
 
 echo "" >&2
 echo "Ding! Oven is ready." >&2
