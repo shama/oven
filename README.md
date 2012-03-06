@@ -27,9 +27,9 @@ Uses git to download the latest CakePHP and install Oven into your current folde
 
 ### Manual Install
 
-If that doesn't work then just download or `git clone` this into a `Oven` folder
-in a CakePHP 2 app. Enable the plugin in `Config/bootstrap.php` and run the
-command `./Console/cake oven.init`.
+If that doesn't work then just download or `git clone` this into the
+`app/Plugin/Oven` folder in a CakePHP 2 app. Enable the plugin in
+`app/Config/bootstrap.php` and run the command `./Console/cake oven.init`.
 
 ## Usage
 
