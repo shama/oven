@@ -13,13 +13,17 @@ have been warned.
 
 ## WHAT IS THIS?
 
-
+Oven is a CakePHP plugin that enables you to bake an entire app from a single
+[json recipe](https://github.com/shama/oven/blob/master/Config/config.json) file.
+It allows you to then edit your app as you would normally and later rebake as
+needed without overwriting your code. It also includes an easily override-able
+scaffolding controlled by your recipe file.
 
 ## One Line Install (requires git)
 
     curl http://dontkry.com/oven/install.sh | sh
 
-Uses git to download the latest CakePHP and install Oven.
+Uses git to download the latest CakePHP and install Oven into your current folder.
 
 ## Usage
 
