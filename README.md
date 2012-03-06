@@ -17,7 +17,7 @@ Oven is a CakePHP plugin that enables you to bake an entire app from a single
 [json recipe](https://github.com/shama/oven/blob/master/Config/config.json) file.
 It allows you to then edit your app as you would normally and later rebake as
 needed without overwriting your code. It also includes an easily override-able
-scaffolding controlled by your recipe file.
+scaffolding/CMS controlled by your recipe file.
 
 ## One Line Install (requires git)
 
@@ -33,7 +33,7 @@ If that doesn't work then just download or `git clone` this into the
 
 ## Usage
 
-## Initialize
+### Initialize
 
 If you used the one line install above then you can skip this. If you downloaded
 and included Oven yourself then run the following command to have Oven init your
@@ -86,6 +86,8 @@ More info on this to come.
 * Put ckeditor field type into it's own repo and use something more lightweight
 * Make a default file manager
 * Multiple recipes
+* Plugin baking
+* Croogo integration
 
 ## License
 
