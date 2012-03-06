@@ -25,6 +25,12 @@ scaffolding controlled by your recipe file.
 
 Uses git to download the latest CakePHP and install Oven into your current folder.
 
+### Manual Install
+
+If that doesn't work then just download or `git clone` this into a `Oven` folder
+in a CakePHP 2 app. Enable the plugin in `Config/bootstrap.php` and run the
+command `./Console/cake oven.init`.
+
 ## Usage
 
 ## Initialize
@@ -79,6 +85,7 @@ More info on this to come.
 * Upgrade default theme to bootstrap 2
 * Put ckeditor field type into it's own repo and use something more lightweight
 * Make a default file manager
+* Multiple recipes
 
 ## License
 
