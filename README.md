@@ -6,7 +6,7 @@ A CakePHP 2 Re-Baker and CMS Plugin
 
 Oven is currently in **beta**. I would like to get the community's opinion and input
 on this project. Open an issue, find me on
-[twitter](http://twitter.com/kyletyoung) or on irc #cakephp as `shama`.
+[twitter](http://twitter.com/shamakry) or on irc #cakephp as `shama`.
 
 This means functionality will change and this plugin may *destroy your code*. You
 have been warned.
@@ -15,7 +15,7 @@ have been warned.
 
 Oven is a CakePHP plugin that enables you to bake an entire app from a single
 [json recipe](https://github.com/shama/oven/blob/master/Config/config.json) file.
-It allows you to then edit your app as you would normally and later rebake as
+It allows you to then edit your app as you would normally and later re-bake as
 needed without overwriting your code. It also includes an easily override-able
 scaffolding/CMS controlled by your recipe file.
 
