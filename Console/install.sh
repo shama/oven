@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install CakePHP/Oven: curl http://dontkry.com/oven/install.sh | sh
 
@@ -47,11 +47,15 @@ fi
 if [ -z $1 ]; then
   pwd=`pwd`
 else
-  pwd=$1
+  pwd=./$1
+  # Folder exists?
+  if [ ! -d "$pwd" ]; then
+    mkdir $pwd 2>&1
+  fi
 fi
 
 # install folder empty?
-if [ "$(ls -A $pwd | grep -v oven-install-*)" ]; then
+if [ "$(ls -A $pwd 2>&1 | grep -v oven-install-*)" ]; then
   echo "There appears to be files in [$pwd]." >&2
   echo "Please install Oven into an empty folder." >&2
   echo "" >&2
@@ -59,29 +63,33 @@ if [ "$(ls -A $pwd | grep -v oven-install-*)" ]; then
 fi
 
 # Check for CakePHP 2
-cake=`cat lib/Cake/VERSION.txt 2>&1`
+cake=`cat $pwd/lib/Cake/VERSION.txt 2>&1`
 ret=$?
-if [ $ret -eq 0 ]; then
-  (exit 0)
-else
-  echo "Installing CakePHP 2..." >&2
-  git clone git://github.com/cakephp/cakephp.git $pwd/.oven
-  mv .oven/* .
-  rm -rf .oven
+if [ $ret != 0 ]; then
+  echo "Installing CakePHP..."
+  git clone git://github.com/cakephp/cakephp.git $pwd/oventmp
+  mv $pwd/oventmp/* $pwd 2>&1 && rm -rf oventmp 2>&1
 fi
 
 # Install Oven
-echo "Installing Oven..." >&2
-git clone git://github.com/shama/oven.git $pwd/app/Plugin/Oven
+cake=`cat $pwd/lib/Cake/VERSION.txt 2>&1`
+ret=$?
+if [ $ret -eq 0 ]; then
+  echo "Installing Oven..."
+  git clone git://github.com/shama/oven.git $pwd/app/Plugin/Oven
 
-# TODO: Check for recipe
+  # TODO: Check for recipe
 
-# Init Oven
-echo "\nCakePlugin::load('Oven');" >> $pwd/app/Config/bootstrap.php
-cd $pwd/app
-./Console/cake oven.init
+  # Init Oven
+  echo -e "\nCakePlugin::load('Oven');" >> $pwd/app/Config/bootstrap.php
+  cd $pwd/app
+  ./Console/cake oven.init
 
-echo "" >&2
-echo "Ding! Oven is ready." >&2
-echo "cd into $pwd/app and run ./Console/cake Oven.bake --help" >&2
+  echo ""
+  echo "Ding! Oven is ready."
+  echo "cd into $pwd/app and run ./Console/cake oven.bake --help"
+else
+ echo "Something went wrong. Could not detect nor install CakePHP." >&2
+fi
+
 echo "" >&2
