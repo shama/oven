@@ -34,9 +34,11 @@ class OvenHtmlHelper extends HtmlHelper {
  * @return string
  */
 	public function image($path, $opts = array()) {
-		$path = $this->Image->make($path, $opts);
-		foreach ($this->Image->phpThumb as $key => $val) {
-			unset($opts[$key]);
+		if (isset($opts['w']) || isset($opts['h'])) {
+			$path = $this->Image->make($path, $opts);
+			foreach ($this->Image->phpThumb as $key => $val) {
+				unset($opts[$key]);
+			}
 		}
 		return parent::image($path, $opts);
 	}
