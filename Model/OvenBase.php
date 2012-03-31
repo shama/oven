@@ -9,6 +9,7 @@ App::uses('OvenAppModel', 'Oven.Model');
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenBase extends OvenAppModel {
+
 /**
  * name
  * @var string
@@ -23,4 +24,5 @@ class OvenBase extends OvenAppModel {
 		'Oven.Upload',
 		'Oven.Slug',
 	);
+
 }

@@ -1,5 +1,4 @@
 <?php
-//App::uses('AppHelper', 'View/Helper');
 App::uses('FormHelper', 'View/Helper');
 
 /**
@@ -15,6 +14,7 @@ App::uses('FormHelper', 'View/Helper');
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenFormHelper extends FormHelper {
+
 /**
  * _View
  * @var View
@@ -43,7 +43,7 @@ class OvenFormHelper extends FormHelper {
 		), $opts);
 		if (!empty($opts['help'])) {
 			$opts['data-content'] = $opts['help'];
-			$opts['data-original-title'] = 'Help For '.Inflector::humanize($fieldName);
+			$opts['data-original-title'] = 'Help For ' . Inflector::humanize($fieldName);
 			unset($opts['help']);
 		}
 		if (!empty($opts['type'])) {

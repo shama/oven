@@ -10,6 +10,7 @@ App::uses('OvenAppController', 'Oven.Controller');
  * @copyright 2012 Kyle Robinson Young
  */
 class BasesController extends OvenAppController {
+
 /**
  * name
  *
@@ -36,7 +37,7 @@ class BasesController extends OvenAppController {
 /**
  * beforeFilter
  */
-	function beforeFilter() {
+	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->set('type', Inflector::humanize(Inflector::underscore($this->name)));
 		$this->set('modelClass', $this->modelClass);
@@ -46,7 +47,7 @@ class BasesController extends OvenAppController {
 /**
  * admin_index
  */
-	function admin_index() {
+	public function admin_index() {
 		$data = $this->paginate();
 		$this->set(compact('data'));
 	}
@@ -56,7 +57,7 @@ class BasesController extends OvenAppController {
  *
  * @param integer $id 
  */
-	function admin_edit($id=null) {
+	public function admin_edit($id=null) {
 		if (!empty($this->request->data)) {
 			if ($this->{$this->modelClass}->saveAll($this->data)) {
 				$this->Session->setFlash(__d('oven', 'Saved!', true));
@@ -77,7 +78,7 @@ class BasesController extends OvenAppController {
  *
  * @param integer $id 
  */
-	function admin_delete($id=null) {
+	public function admin_delete($id=null) {
 		$this->{$this->modelClass}->delete($id);
 		$this->Session->setFlash(__d('oven', 'Deleted.', true));
 		$this->redirect(array('action' => 'index'));
@@ -89,8 +90,7 @@ class BasesController extends OvenAppController {
  *
  * @todo Write me
  */
-	function admin_sort() {
-		
+	public function admin_sort() {
 	}
 
 /**
@@ -100,10 +100,10 @@ class BasesController extends OvenAppController {
  * @param type $layout
  */
 	public function render($view = null, $layout = null) {
-		if (is_null($layout)) {
+		if (empty($layout) && !empty($this->layout)) {
 			$layout = $this->layout;
 		}
-		if (empty($layout) || $layout == 'default') {
+		if (empty($layout)) {
 			$layout = 'oven';
 		}
 		if (!file_exists(APP . 'View' . DS . 'Layouts' . DS . $layout . '.ctp')) {
@@ -119,4 +119,5 @@ class BasesController extends OvenAppController {
 		}
 		return parent::render($view, $layout);
 	}
+
 }

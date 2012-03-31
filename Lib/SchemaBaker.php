@@ -10,6 +10,7 @@ App::uses('DboSource', 'Model/Datasource');
  * @copyright 2012 Kyle Robinson Young
  */
 class SchemaBaker {
+
 /**
  * defaults
  * 
@@ -74,7 +75,7 @@ class SchemaBaker {
 			$node['schema'] = Set::merge($this->defaults, $node['schema']);
 			try {
 				$res = $this->_db->query('DESCRIBE ' . $table);
-				
+
 				// ALTER TABLE
 				$exists = array();
 				foreach ($res as $row) {
@@ -88,16 +89,14 @@ class SchemaBaker {
 					$sql = 'ALTER TABLE `' . $table . '` ADD ' . $type . ';';
 					$this->_db->query($sql);
 				}
-				$clean_tables = !empty($config['config']['clean_tables']) ? true : false;
-				if ($clean_tables) {
+				$cleanTables = !empty($config['config']['clean_tables']) ? true : false;
+				if ($cleanTables) {
 					foreach ($remove as $val) {
 						$sql = 'ALTER TABLE `' . $table . '` DROP `' . $val . '`;';
 						$this->_db->query($sql);
 					}
 				}
-				
 			} catch (PDOException $e) {
-				
 				// CREATE TABLES
 				$sql = 'CREATE TABLE IF NOT EXISTS `' . $table . '` (';
 				foreach ($node['schema'] as $key => $arr) {
@@ -107,7 +106,6 @@ class SchemaBaker {
 				$sql = substr($sql, 0, -3);
 				$sql .= ');';
 				$this->_db->query($sql);
-				
 			}
 		}
 		$this->_getTables();
@@ -131,19 +129,19 @@ class SchemaBaker {
 		}
 		switch ($type) {
 			case 'primary':
-				return '`'.$key.'` INT( 11 ) '.$null.' AUTO_INCREMENT PRIMARY KEY';
+				return '`' . $key . '` INT( 11 ) ' . $null . ' AUTO_INCREMENT PRIMARY KEY';
 			case 'datetime':
-				return '`'.$key.'` DATETIME '.$null;
+				return '`' . $key . '` DATETIME ' . $null;
 			case 'text':
 			case 'ckeditor':
 			case 'wysihat':
-				return '`'.$key.'` TEXT '.$null;
+				return '`' . $key . '` TEXT ' . $null;
 			case 'boolean':
-				return '`'.$key.'` TINYINT( 1 ) '.$null;
+				return '`' . $key . '` TINYINT( 1 ) ' . $null;
 			case 'price':
-				return '`'.$key.'` DECIMAL( 10,2 ) '.$null;
+				return '`' . $key . '` DECIMAL( 10,2 ) ' . $null;
 			default:
-				return $key.' VARCHAR( 255 ) '.$null;
+				return $key . ' VARCHAR( 255 ) ' . $null;
 		}
 	}
 
@@ -159,4 +157,5 @@ class SchemaBaker {
 		}
 		return $this->tables;
 	}
+
 }

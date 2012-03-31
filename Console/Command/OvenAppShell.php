@@ -10,6 +10,7 @@ App::uses('Shell', 'Console');
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenAppShell extends Shell {
+
 /**
  * Config
  *
@@ -44,4 +45,5 @@ class OvenAppShell extends Shell {
 		));
 		$this->hr();
 	}
+
 }

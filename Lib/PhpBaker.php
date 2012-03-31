@@ -12,6 +12,7 @@ App::uses('File', 'Utility');
  * @todo Use CakePHP core bake for merge-able default templates
  */
 class PhpBaker {
+
 /**
  * Our class name
  *
@@ -93,6 +94,7 @@ class PhpBaker {
  * @param string $path Path to class, use App::uses() style
  * @return array
  * @todo ignore core paths (for PagesController)
+ * @throws CakeException
  */
 	public function read($class = '', $path = '') {
 		if (!empty($class)) {
@@ -102,7 +104,7 @@ class PhpBaker {
 			$this->path = $path;
 		}
 		if ($this->path == 'View') {
-			throw new Exception(__d('Oven', 'Oven view baking not supported.'));
+			throw new CakeException(__d('Oven', 'Oven view baking not supported.'));
 		}
 
 		// GET FILENAME
@@ -198,7 +200,7 @@ class PhpBaker {
 		if (empty($two)) {
 			$two = array($this->class, $this->path);
 		}
-		if (sizeof($one) != 2 || sizeof($two) != 2) {
+		if (count($one) != 2 || count($two) != 2) {
 			return false;
 		}
 		$merge1 = $this->read($one[0], $one[1]);
@@ -344,9 +346,9 @@ class PhpBaker {
 			if ($method->isStatic()) {
 				$access .= ' static';
 			}
-			$start = $method->getStartLine()-1;
+			$start = $method->getStartLine() - 1;
 			$end = $method->getEndLine();
-			$value = implode('', array_slice($file, $start, $end-$start));
+			$value = implode('', array_slice($file, $start, $end - $start));
 			$methods[$name] = array(
 				'doc' => $doc,
 				'value' => $value,
@@ -377,4 +379,5 @@ class PhpBaker {
 		$this->_Clones[] = $clone;
 		return $class;
 	}
+
 }

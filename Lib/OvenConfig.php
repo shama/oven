@@ -7,6 +7,7 @@
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenConfig {
+
 /**
  * Oven Version
  *
@@ -98,7 +99,6 @@ class OvenConfig {
 					)) {
 					$this->__construct();
 				}
-				
 			}
 		} else {
 			$this->config = $config;
@@ -130,4 +130,5 @@ class OvenConfig {
 		}
 		return $config;
 	}
+
 }

@@ -1,5 +1,5 @@
 <?php
-App::uses('OvenAppShell', 'Oven.Console/Command');;
+App::uses('OvenAppShell', 'Oven.Console/Command');
 
 /**
  * Watch Shell
@@ -10,6 +10,7 @@ App::uses('OvenAppShell', 'Oven.Console/Command');;
  * @copyright 2012 Kyle Robinson Young
  */
 class WatchShell extends OvenAppShell {
+
 /**
  * uses
  * @var array
@@ -29,7 +30,7 @@ class WatchShell extends OvenAppShell {
 	public function main() {
 		$this->_header();
 		$this->out("Watching for changes (press Ctrl+C to quit)...");
-		while(1) {
+		while (1) {
 			if ($this->_hasChanged()) {
 				$this->out("<info>Recipe has changed, baking... </info>", 0);
 				try {
@@ -70,4 +71,5 @@ class WatchShell extends OvenAppShell {
 		}
 		return false;
 	}
+
 }

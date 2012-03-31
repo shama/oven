@@ -13,6 +13,7 @@ App::uses('PhpBaker', 'Oven.Lib');
  * @copyright 2012 Kyle Robinson Young
  */
 class Oven extends OvenAppModel {
+
 /**
  * name
  *
@@ -247,4 +248,5 @@ class Oven extends OvenAppModel {
 		$doc .= " */";
 		return $doc;
 	}
+
 }

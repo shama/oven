@@ -7,6 +7,7 @@
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenAppController extends AppController {
+
 /**
  * helpers
  * @var array
@@ -68,7 +69,7 @@ class OvenAppController extends AppController {
 						'username' => 'email',
 						'password' => 'password'
 					),
-					'userModel' => 'Users.User', 
+					'userModel' => 'Users.User',
 					'scope' => array('User.active' => 1),
 				),
 			);
@@ -76,4 +77,5 @@ class OvenAppController extends AppController {
 		}
 		return true;
 	}
+
 }

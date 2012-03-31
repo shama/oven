@@ -11,6 +11,7 @@ App::uses('PhpBaker', 'Oven.Lib');
  * @copyright 2012 Kyle Robinson Young
  */
 class MergeShell extends OvenAppShell {
+
 /**
  * main
  */
@@ -45,4 +46,5 @@ class MergeShell extends OvenAppShell {
 			),
 		));
 	}
+
 }

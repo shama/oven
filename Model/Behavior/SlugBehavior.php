@@ -7,6 +7,7 @@
  * @copyright 2012 Kyle Robinson Young
  */
 class SlugBehavior extends ModelBehavior {
+
 /**
  * settings
  * @var array
@@ -15,7 +16,7 @@ class SlugBehavior extends ModelBehavior {
 		'slugFromField' => '',
 		'slugFields' => array(),
 	);
-	
+
 /**
  * setup
  *
@@ -61,7 +62,7 @@ class SlugBehavior extends ModelBehavior {
 		}
 		return true;
 	}
-	
+
 /**
  * _slugify
  * @param string $str 

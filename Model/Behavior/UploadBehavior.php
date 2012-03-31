@@ -9,6 +9,7 @@ App::uses('Folder', 'Utility');
  * @copyright 2012 Kyle Robinson Young
  */
 class UploadBehavior extends ModelBehavior {
+
 /**
  * settings
  * @var array
@@ -86,7 +87,6 @@ class UploadBehavior extends ModelBehavior {
 		foreach ($Model->data[$Model->alias] as $key => $val) {
 			if (in_array($key, $fields) && is_array($val)) {
 				$this->_uploadLater[$Model->alias][$key] = $val;
-				//$Model->data[$Model->alias][$key] = '';
 				unset($Model->data[$Model->alias][$key]);
 			}
 		}
@@ -108,7 +108,7 @@ class UploadBehavior extends ModelBehavior {
 			foreach ($this->_uploadLater as $key => $fields) {
 				foreach ($fields as $name => $file) {
 					if (!is_uploaded_file($file['tmp_name'])) {
-						//continue;
+						continue;
 					}
 					$ext = strtolower(strrchr($file['name'], '.'));
 					$filename = md5($file['name'] . $file['size']) . $ext;

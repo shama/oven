@@ -10,6 +10,7 @@ App::uses('OvenAppShell', 'Oven.Console/Command');
  * @copyright 2012 Kyle Robinson Young
  */
 class BakeShell extends OvenAppShell {
+
 /**
  * uses
  * @var array
@@ -37,4 +38,5 @@ class BakeShell extends OvenAppShell {
 			'description' => array('Bakes an Oven recipe'),
 		));
 	}
+
 }

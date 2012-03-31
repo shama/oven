@@ -13,6 +13,7 @@ App::import('Vendor', 'Oven.phpThumb', array('file' => 'phpThumb' . DS . 'phpthu
  *	http://bakery.cakephp.org/articles/view/phpthumb-helper-2
  */
 class ImageHelper extends AppHelper {
+
 /**
  * phpThumb
  * 

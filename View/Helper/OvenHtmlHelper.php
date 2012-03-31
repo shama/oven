@@ -16,6 +16,7 @@ App::uses('ImageHelper', 'Oven.View/Helper');
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenHtmlHelper extends HtmlHelper {
+
 /**
  * __construct
  * @param View $View
@@ -42,4 +43,5 @@ class OvenHtmlHelper extends HtmlHelper {
 		}
 		return parent::image($path, $opts);
 	}
+
 }

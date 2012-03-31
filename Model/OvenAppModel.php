@@ -9,6 +9,7 @@ App::uses('OvenConfig', 'Oven.Lib');
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenAppModel extends AppModel {
+
 /**
  * actsAs
  * @var array
@@ -27,4 +28,5 @@ class OvenAppModel extends AppModel {
 		parent::__construct($id, $table, $ds);
 		new OvenConfig();
 	}
+
 }

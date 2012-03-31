@@ -7,6 +7,7 @@
  * @copyright 2012 Kyle Robinson Young
  */
 class OvenTestCase extends CakeTestCase {
+
 /**
  * Setup paths to test_app
  */
@@ -18,6 +19,7 @@ class OvenTestCase extends CakeTestCase {
 		), App::RESET);
 		CakePlugin::loadAll();
 	}
+
 /**
  * Clear test files
  */
@@ -48,8 +50,9 @@ class OvenTestCase extends CakeTestCase {
 		}
 		foreach ($tables as $table) {
 			if (in_array($table, $this->Oven->SchemaBaker->tables)) {
-				$this->Oven->query('DROP TABLE `'.$table.'`');
+				$this->Oven->query('DROP TABLE `' . $table . '`');
 			}
 		}
 	}
+
 }
