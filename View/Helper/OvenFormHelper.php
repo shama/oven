@@ -32,18 +32,51 @@ class OvenFormHelper extends FormHelper {
 	}
 
 /**
+ * inputs
+ *
+ * @param mixed $fields
+ * @param mixed $blacklist
+ */
+	public function inputs($fields = null, $blacklist = null) {
+		$legend = $fieldsetClass = $out = '';
+		if (isset($fields['legend'])) {
+			$legend = $fields['legend'];
+			unset($fields['legend']);
+		}
+		if (isset($fields['fieldset'])) {
+			$fieldsetClass = $fields['fieldset'];
+			unset($fields['fieldset']);
+		}
+		foreach ($fields as $field => $opts) {
+			if (is_int($field)) {
+				$field = $opts;
+			}
+			if (!is_array($opts)) {
+				$opts = array();
+			}
+			$out .= $this->input($field, $opts);
+		}
+		return $this->Html->useTag('fieldset', $fieldsetClass, $this->Html->useTag('legend', $legend) . $out);
+	}
+
+/**
  * input
+ *
  * @param string $fieldName
- * @param array $opts 
+ * @param array $opts
+ * 
+ * @todo Checkboxes break with this
  */
 	public function input($fieldName, $opts = array()) {
 		$opts = Set::merge(array(
-			'div' => array('class' => 'clearfix'),
-			'class' => 'span12',
+			'div' => array('class' => 'control-group'),
+			'between' => '<div class="controls">',
+			'after' => '</div>',
+			'class' => 'input-xlarge',
+			'label' => array('class' => 'control-label'),
 		), $opts);
 		if (!empty($opts['help'])) {
-			$opts['data-content'] = $opts['help'];
-			$opts['data-original-title'] = 'Help For ' . Inflector::humanize($fieldName);
+			$opts['after'] = '<p class="help-block">' . $opts['help'] . '</p>' . $opts['after'];
 			unset($opts['help']);
 		}
 		if (!empty($opts['type'])) {
@@ -78,6 +111,8 @@ class OvenFormHelper extends FormHelper {
  * @param array $options
  * @param array $attributes
  * @return string
+ * 
+ * @todo Fix to work with Bootstrap 2
  */
 	public function radio($fieldName, $options = array(), $attributes = array()) {
 		$attributes = $this->_initInputField($fieldName, $attributes);
