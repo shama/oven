@@ -4,30 +4,32 @@
 	<?php
 	echo $this->Html->charset();
 	echo $this->Html->meta('icon');
-	echo $this->Html->css(array(
-		'/oven/css/bootstrap.min.css',
-		'/oven/css/admin',
-	));
+	echo '<link rel="stylesheet/less" type="text/css" href="/cloudtop/oven/less/bootstrap.less" />';
 	echo $this->Html->script(array(
 		'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
-		'/oven/js/bootstrap-modal',
-		'/oven/js/bootstrap-alerts',
-		'/oven/js/bootstrap-twipsy',
-		'/oven/js/bootstrap-popover',
-		'/oven/js/bootstrap-dropdown',
-		//'/oven/js/bootstrap-scrollspy',
-		'/oven/js/bootstrap-tabs',
+		'/oven/bootstrap/js/bootstrap-transition',
+		'/oven/bootstrap/js/bootstrap-alert',
+		'/oven/bootstrap/js/bootstrap-modal',
+		'/oven/bootstrap/js/bootstrap-dropdown',
+		'/oven/bootstrap/js/bootstrap-scrollspy',
+		'/oven/bootstrap/js/bootstrap-tab',
+		'/oven/bootstrap/js/bootstrap-tooltip',
+		'/oven/bootstrap/js/bootstrap-popover',
+		'/oven/bootstrap/js/bootstrap-button',
+		'/oven/bootstrap/js/bootstrap-collapse',
+		'/oven/bootstrap/js/bootstrap-carousel',
+		'/oven/bootstrap/js/bootstrap-typeahead',
+		'/oven/js/less-1.3.0.min',
 		'/oven/js/admin',
-		'jquery.stream-1.2',
 	));
 	?>
 </head>
 <body>
-<?php echo $this->element('topbar', array('plugin' => 'Oven')); ?>
+<?php echo $this->element('navbar', array('plugin' => 'Oven')); ?>
 <div class="container-fluid">
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $content_for_layout; ?>
-	<footer class="text-right">
+	<footer class="pull-right">
 		<p><?php echo Configure::read('Oven.config.footer'); ?></p>
 	</footer>
 </div><!-- /.container -->

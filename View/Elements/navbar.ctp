@@ -1,6 +1,6 @@
-<div class="topbar">
-	<div class="topbar-inner">
-		<div class="container-fluid">
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
 			<?php
 			echo $this->Html->link(Configure::read('Oven.config.title'), '/admin', array('class' => 'brand'));
 			?>
@@ -18,8 +18,8 @@
 						if (empty($val['children'])) {
 							echo '<li>' . $this->Html->link($val['title'], $val['url']) . '</li>';
 						} else {
-							echo '<li class="dropdown" data-dropdown="dropdown">';
-							echo $this->Html->link($val['title'], '#', array('class' => 'dropdown-toggle'));
+							echo '<li class="dropdown" data-toggle="dropdown">';
+							echo $this->Html->link($val['title'] . '<b class="caret"></b>', '#', array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
 							echo '<ul class="dropdown-menu">';
 							foreach ($val['children'] as $k => $v) {
 								$title = !empty($v['title']) ? $v['title'] : Inflector::humanize($k);
