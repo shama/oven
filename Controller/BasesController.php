@@ -113,8 +113,12 @@ class BasesController extends OvenAppController {
 			$view = $this->action;
 		}
 		if ($view !== false) {
-			if (!file_exists(APP . 'View' . DS . $this->name . DS . $view . '.ctp')) {
+			$viewPath = substr(get_class($this), 0, -10);
+			if (!file_exists(APP . 'View' . DS . $viewPath . DS . $view . '.ctp')) {
+				$this->plugin = 'Oven';
 				$this->viewPath = 'Bases';
+			} else {
+				$this->viewPath = $viewPath;
 			}
 		}
 		return parent::render($view, $layout);
