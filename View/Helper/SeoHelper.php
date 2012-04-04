@@ -29,20 +29,6 @@ class SeoHelper extends AppHelper {
 	);
 
 /**
- * View
- *
- * @var View
- */
-	public $View = null;
-
-/**
- * beforeRender
- */
-	public function beforeRender() {
-		$this->View = ClassRegistry::getObject('view');
-	}
-	
-/**
  * meta
  *
  * @param string $name
@@ -52,7 +38,7 @@ class SeoHelper extends AppHelper {
  */
 	public function meta($name = null, $content = null, $page = null) {
 		if (!isset($page)) {
-			$page = $this->View->here;
+			$page = $this->_View->here;
 		}
 		$this->settings = Set::merge(
 			$this->settings,
@@ -80,7 +66,7 @@ class SeoHelper extends AppHelper {
 	public function render() {
 		$out = '';
 		$all = $this->settings['*'];
-		$page = (!empty($this->settings[$this->View->here])) ? $this->settings[$this->View->here] : array();
+		$page = (!empty($this->settings[$this->_View->here])) ? $this->settings[$this->_View->here] : array();
 		$meta = Set::merge($all, $page);
 		foreach ($meta as $name => $content) {
 			switch (strtolower($name)) {
