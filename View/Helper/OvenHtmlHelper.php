@@ -41,6 +41,10 @@ class OvenHtmlHelper extends HtmlHelper {
 				unset($opts[$key]);
 			}
 		}
+		$base = substr(Router::url('/'), 0, -1);
+		if (!empty($base) && substr($path, 0, strlen($base)) == $base) {
+			$path = substr($path, strlen($base));
+		}
 		return parent::image($path, $opts);
 	}
 

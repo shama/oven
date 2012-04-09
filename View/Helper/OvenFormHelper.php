@@ -79,6 +79,12 @@ class OvenFormHelper extends FormHelper {
 			$opts['after'] = '<p class="help-block">' . $opts['help'] . '</p>' . $opts['after'];
 			unset($opts['help']);
 		}
+		if (is_string($opts['label'])) {
+			$opts['label'] = array(
+				'text' => $opts['label'],
+				'class' => 'control-label',
+			);
+		}
 		if (!empty($opts['type'])) {
 			switch ($opts['type']) {
 				case 'ckeditor':
