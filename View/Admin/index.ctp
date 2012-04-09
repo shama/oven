@@ -34,7 +34,7 @@ $typeTitle = !empty($typeTitle) ? $typeTitle : $this->name;
 						?>
 						<th><?php echo $this->Paginator->sort($key); ?></th>
 					<?php endforeach; ?>
-					<th><?php echo __d('oven', 'Actions'); ?></th>
+					<th style="text-align:right;"><?php echo __d('oven', 'Actions'); ?></th>
 				</tr>
 				<?php foreach($data as $item): ?>
 					<tr>
@@ -50,7 +50,7 @@ $typeTitle = !empty($typeTitle) ? $typeTitle : $this->name;
 							?>
 							<td><?php echo substr($item[$modelClass][$key], 0, 255); ?></td>
 						<?php endforeach; ?>
-						<td width="10%"><?php
+						<td style="text-align:right;"><?php
 						echo $this->Html->link(
 							__d('oven', 'Edit'),
 							array('action' => 'edit', $item[$modelClass]['id']),
