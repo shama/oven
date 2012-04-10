@@ -120,11 +120,18 @@ class OvenConfig {
 			'config' => $this->defaults['config'],
 			'oven' => $this->defaults['oven'],
 		), $config);
+		$hideOnIndexTypes = array(
+			'file', 'slug',
+		);
 		foreach ($config['recipe'] as $key => $val) {
 			$config['recipe'][$key] = Set::merge($this->defaults['recipe'], $val);
 			if (!empty($val['schema'])) {
 				foreach ($val['schema'] as $k => $val) {
-					$config['recipe'][$key]['schema'][$k] = Set::merge($this->defaults['field'], $val);
+					$cfg = Set::merge($this->defaults['field'], $val);
+					if (!isset($cfg['hideOn']) && in_array($cfg['type'], $hideOnIndexTypes)) {
+						$cfg['hideOn'] = array('admin_index');
+					}
+					$config['recipe'][$key]['schema'][$k] = $cfg;
 				}
 			}
 		}
