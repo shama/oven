@@ -11,12 +11,6 @@ App::uses('OvenAppModel', 'Oven.Model');
 class OvenBase extends OvenAppModel {
 
 /**
- * name
- * @var string
- */
-	public $name = 'OvenBase';
-
-/**
  * actsAs
  * @var array
  */

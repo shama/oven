@@ -12,13 +12,6 @@ App::uses('OvenAppController', 'Oven.Controller');
 class BasesController extends OvenAppController {
 
 /**
- * name
- *
- * @var string
- */
-	public $name = 'Bases';
-
-/**
  * uses
  *
  * @var array
@@ -35,10 +28,13 @@ class BasesController extends OvenAppController {
 	);
 
 /**
- * beforeFilter
+ * __construct
+ *
+ * @param CakeRequest $request
+ * @param CakeResponse $response
  */
-	public function beforeFilter() {
-		parent::beforeFilter();
+	public function __construct(CakeRequest $request = null, CakeResponse $response = null) {
+		parent::__construct($request, $response);
 		$this->set('type', Inflector::humanize(Inflector::underscore($this->name)));
 		$this->set('modelClass', $this->modelClass);
 		$this->set('table', $this->{$this->modelClass}->table);
