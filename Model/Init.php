@@ -39,7 +39,7 @@ class Init extends OvenAppModel {
  */
 	public function all($config = array()) {
 		$this->initCore($config);
-		//$this->initDatabase($config);
+		$this->initDatabase($config);
 		return true;
 	}
 
@@ -103,10 +103,10 @@ class Init extends OvenAppModel {
 			return false;
 		}
 		$config = array_merge(array(
-			'datasource' => '',
+			'datasource' => 'Database/Mysql',
 			'host' => 'localhost',
-			'login' => 'user',
-			'password' => '',
+			'login' => 'username',
+			'password' => 'password',
 			'database' => 'database',
 			'prefix' => '',
 		), $config);
@@ -114,7 +114,7 @@ class Init extends OvenAppModel {
 		$File = new File($src);
 		$code = $File->read();
 		foreach ($config as $key => $val) {
-			$code = str_replace("{{$key}}", $val, $code);
+			$code = str_replace('{{' . $key . '}}', $val, $code);
 		}
 		$File->close();
 		$File = new File($dest, true);

@@ -1,5 +1,6 @@
 <?php
 App::uses('OvenConfig', 'Oven.Lib');
+App::uses('AppModel', 'Model');
 
 /**
  * Oven App Model

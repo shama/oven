@@ -15,6 +15,7 @@ App::uses('File', 'Utility');
  * @copyright 2012 Kyle Robinson Young
  */
 class InitTest extends OvenTestCase {
+
 /**
  * setUp
  */
