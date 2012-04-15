@@ -21,7 +21,7 @@ scaffolding/CMS controlled by your recipe file.
 
 ## One Line Install (requires git)
 
-    curl http://dontkry.com/oven/install.sh | bash -s NewCakeApp
+    curl https://raw.github.com/shama/oven/master/Console/install.sh | bash -s NewCakeApp
 
 Uses git to download the latest CakePHP & Oven. Replace `NewCakeApp` with
 whatever folder name you want to install into or remove to install into
