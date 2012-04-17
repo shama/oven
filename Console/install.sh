@@ -68,7 +68,7 @@ ret=$?
 if [ $ret != 0 ]; then
   echo "Installing CakePHP..."
   git clone git://github.com/cakephp/cakephp.git $pwd/oventmp
-  mv $pwd/oventmp/* $pwd 2>&1 && rm -rf oventmp 2>&1
+  mv -f $pwd/oventmp/{*,.*} $pwd 2>&1 && rm -rf oventmp 2>&1
 fi
 
 # Install Oven
@@ -82,12 +82,10 @@ if [ $ret -eq 0 ]; then
 
   # Init Oven
   echo -e "\nCakePlugin::load('Oven');" >> $pwd/app/Config/bootstrap.php
-  cd $pwd/app
-  ./Console/cake oven.init
 
   echo ""
   echo "Ding! Oven is ready."
-  echo "cd into $pwd/app and run ./Console/cake oven.bake --help"
+  echo "cd into $pwd/app and run ./Console/cake oven.init"
 else
  echo "Something went wrong. Could not detect nor install CakePHP." >&2
 fi

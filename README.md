@@ -37,9 +37,10 @@ If that doesn't work then just download or `git clone` this into the
 
 ### Initialize
 
-If you used the one line install above then you can skip this. If you downloaded
-and included Oven yourself then run the following command to have Oven init your
-app for you:
+The `oven.init` command will setup your `Config/core.php` and 
+`Config/database.php` files (if they haven't already been customized). It is
+recommended that after you've installed Oven to run this command to init your
+app:
 
     ./Console/cake oven.init
 
