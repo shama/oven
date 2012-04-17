@@ -51,9 +51,9 @@ class BasesController extends OvenAppController {
 /**
  * admin_edit
  *
- * @param integer $id 
+ * @param integer $id
  */
-	public function admin_edit($id=null) {
+	public function admin_edit($id = null) {
 		if (!empty($this->request->data)) {
 			if ($this->{$this->modelClass}->saveAll($this->data)) {
 				$this->Session->setFlash(__d('oven', 'Saved!', true));
@@ -70,23 +70,22 @@ class BasesController extends OvenAppController {
 	}
 
 /**
+ * admin_add
+ */
+	public function admin_add() {
+		$this->admin_edit();
+	}
+
+/**
  * admin_delete
  *
  * @param integer $id 
  */
-	public function admin_delete($id=null) {
+	public function admin_delete($id = null) {
 		$this->{$this->modelClass}->delete($id);
 		$this->Session->setFlash(__d('oven', 'Deleted.', true));
 		$this->redirect(array('action' => 'index'));
 		exit;
-	}
-
-/**
- * admin_sort
- *
- * @todo Write me
- */
-	public function admin_sort() {
 	}
 
 /**
@@ -101,7 +100,7 @@ class BasesController extends OvenAppController {
 		if (empty($layout) && !empty($this->layout)) {
 			$layout = $this->layout;
 		}
-		if (!empty($this->request->params['prefix']) && $layout == 'default') {
+		if (!empty($this->request->params['admin']) && $layout == 'default') {
 			$layout = '';
 		}
 		if (empty($layout)) {
