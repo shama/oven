@@ -24,12 +24,12 @@ class OvenTestCase extends CakeTestCase {
  * Clear test files
  */
 	protected function _clearFiles() {
-		$path = current(App::path('Model'));
+		$path = App::pluginPath('Oven') . 'Test' . DS . 'test_app' . DS . 'Model' . DS;
 		$dir = new Folder($path);
 		foreach ($dir->find() as $file) {
 			unlink($path . $file);
 		}
-		$path = current(App::path('Controller'));
+		$path = App::pluginPath('Oven') . 'Test' . DS . 'test_app' . DS . 'Controller' . DS;
 		$dir = new Folder($path);
 		foreach ($dir->find() as $file) {
 			if ($file == 'TestsController.php') {
