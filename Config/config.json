@@ -23,9 +23,7 @@
 			"author": "Your Name <your@email.com>",
 			"copyright": "Copyright 2012 Your Name"
 		},
-		"nav": [
-			"pages"
-		]
+		"nav": []
 	},
 	"oven": {
 		"clean_tables": true
