@@ -90,7 +90,9 @@ class BasesController extends OvenAppController {
 	}
 
 /**
- * Override render() to use plugin views if custom view does not exist.
+ * Override render() to use plugin views if custom view does not exist. If
+ * 'admin' is set and layout is default then it is assumed you want the
+ * oven layout.
  *
  * @param type $view
  * @param type $layout
@@ -98,6 +100,9 @@ class BasesController extends OvenAppController {
 	public function render($view = null, $layout = null) {
 		if (empty($layout) && !empty($this->layout)) {
 			$layout = $this->layout;
+		}
+		if (!empty($this->request->params['prefix']) && $layout == 'default') {
+			$layout = '';
 		}
 		if (empty($layout)) {
 			$layout = 'oven';
