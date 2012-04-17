@@ -121,7 +121,6 @@ class Oven extends OvenAppModel {
 					);
 				}
 			}
-			// DEFAULT CODE HEADER DOC
 			if (empty($config['config']['code_header']['doc'])) {
 				$config['config']['code_header']['doc'] = $className . ' Model';
 			}
@@ -165,10 +164,13 @@ class Oven extends OvenAppModel {
 					);
 				}
 			}
+			if (empty($config['config']['code_header']['doc'])) {
+				$config['config']['code_header']['doc'] = $className . ' Controller';
+			}
 			$bake = array(
 				'class' => array(
 					'class' => 'class ' . $class . ' extends BasesController',
-					'doc' => "/**\n * $className Controller\n *\n */",
+					'doc' => $this->_buildDocHeader($config),
 					'uses' => array(
 						"App::uses('BasesController', 'Oven.Controller');",
 					),
