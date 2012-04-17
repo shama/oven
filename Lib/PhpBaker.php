@@ -154,7 +154,7 @@ class PhpBaker {
  * @return boolean
  */
 	public function write($data = array()) {
-		//$data = Set::merge($this->data, $data);
+		$data = Set::merge($this->data, $data);
 		$data['class'] = Set::merge(array(
 			'doc' => "/**\n * " . $this->class . "\n * \n */",
 			'class' => '',
