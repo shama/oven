@@ -113,13 +113,7 @@ class Oven extends OvenAppModel {
 		}
 		foreach ($config['recipe'] as $name => $node) {
 			$className = Inflector::classify($name);
-			$props = array(
-				'name' => array(
-					'doc' => "/**\n * name\n *\n * @var string\n */",
-					'value' => $className,
-					'access' => 'public',
-				),
-			);
+			$props = array();
 			if (!empty($node['model'])) {
 				foreach ($node['model'] as $key => $val) {
 					$props[$key] = array(
@@ -163,13 +157,7 @@ class Oven extends OvenAppModel {
 		foreach ($config['recipe'] as $name => $node) {
 			$className = Inflector::camelize($name);
 			$class = $className . 'Controller';
-			$props = array(
-				'name' => array(
-					'doc' => "/**\n * name\n *\n * @var string\n */",
-					'value' => $className,
-					'access' => 'public',
-				),
-			);
+			$props = array();
 			if (!empty($node['controller'])) {
 				foreach ($node['controller'] as $key => $val) {
 					$props[$key] = array(
