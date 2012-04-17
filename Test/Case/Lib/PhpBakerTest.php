@@ -12,6 +12,7 @@ App::uses('File', 'Utility');
  * @copyright 2012 Kyle Robinson Young
  */
 class PhpBakerTest extends OvenTestCase {
+
 /**
  * setUp
  */
@@ -26,15 +27,6 @@ class PhpBakerTest extends OvenTestCase {
  */
 	public function tearDown() {
 		parent::tearDown();
-		$this->_clearFiles();
-	}
-
-/**
- * endTest
- * @param string $method
- */
-	public function endTest($method) {
-		parent::endTest($method);
 		$this->_clearFiles();
 	}
 
@@ -102,7 +94,7 @@ class PhpBakerTest extends OvenTestCase {
 					'access' => 'public',
 				),
 			),
-		);//$PhpBaker->write($expected);
+		);
 		$this->assertEquals($expected, $result);
 	}
 

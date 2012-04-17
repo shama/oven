@@ -278,9 +278,16 @@ class PhpBaker {
 		$interfaces = $this->_Reflection->getInterfaces();
 		$number = count($interfaces);
 		if ($number > 0) {
-			$class .= ' implements ';
+			$implements = '';
 			foreach ($interfaces as $int) {
-				$class .= $int->getName() . ' ';
+				$intName = $int->getName();
+				if ($intName == 'CakeEventListener') {
+					continue;
+				}
+				$implements .= $int->getName() . ' ';
+			}
+			if (!empty($implements)) {
+				$class .= ' implements ' . $implements;
 			}
 		}
 		$file = $this->_File->read();

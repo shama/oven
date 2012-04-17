@@ -193,6 +193,9 @@ class Oven extends OvenAppModel {
 		$dir = new Folder(current(App::path('Model')));
 		$files = $dir->find('.+\.php');
 		foreach ($files as $file) {
+			if ($file == 'AppModel.php') {
+				continue;
+			}
 			$class = Inflector::classify(str_replace('.php', '', $file));
 			$this->models[$file] = $class;
 		}
@@ -209,6 +212,9 @@ class Oven extends OvenAppModel {
 		$dir = new Folder(current(App::path('Controller')));
 		$files = $dir->find('.+\.php');
 		foreach ($files as $file) {
+			if ($file == 'AppController.php') {
+				continue;
+			}
 			$class = Inflector::classify(str_replace('.php', '', $file));
 			$this->controllers[$file] = $class;
 		}
