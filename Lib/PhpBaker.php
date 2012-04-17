@@ -130,7 +130,13 @@ class PhpBaker {
 		// CREATE CLONE
 		$cloneClass = $this->_createClone();
 		App::uses($cloneClass, $this->path);
-		$this->_Class = new $cloneClass();
+		if ($this->path == 'Model') {
+			$this->_Class = new $cloneClass(array(
+				'table' => Inflector::tableize($this->class),
+			));
+		} else {
+			$this->_Class = new $cloneClass();
+		}
 		$this->_Reflection = new ReflectionClass($cloneClass);
 
 		// RETURN INFO ABOUT CLASS
