@@ -18,7 +18,7 @@
 	"config": {
 		"title": "CMS",
 		"footer": "Copyright 2012 Your Name Here",
-		"docblock_header": {
+		"code_header": {
 			"package": "cms",
 			"author": "Your Name <your@email.com>",
 			"copyright": "Copyright 2012 Your Name"

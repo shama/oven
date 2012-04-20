@@ -1,1 +1,1 @@
-<?php $this->extend('Oven.Admin/index'); ?>
+<?php $this->extend('Oven./Admin/index'); ?>
