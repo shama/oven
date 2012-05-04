@@ -15,8 +15,6 @@ class OvenAppController extends AppController {
  * @var array
  */
 	public $helpers = array(
-		'Html' => array('className' => 'Oven.OvenHtml'),
-		'Form' => array('className' => 'Oven.OvenForm'),
 		'Session', 'Js', 'Cache', 'Time',
 	);
 
@@ -54,6 +52,10 @@ class OvenAppController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->_setupAuth();
+		if (!empty($this->request->params['admin'])) {
+			$this->helpers['Html'] = array('className' => 'Oven.OvenHtml');
+			$this->helpers['Form'] = array('className' => 'Oven.OvenForm');
+		}
 	}
 
 /**
