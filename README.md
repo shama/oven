@@ -70,12 +70,57 @@ NewCommentsController. Any conflicts will use the second stated class.
 
 ## CMS
 
+### Controllers
+
 Oven includes an unobtrusive CMS. Use it when you want or override when you only
-want to use it partially. To use the CMS your controllers should extend the
+want to use it partially. To use the CMS, your controllers should extend the
 `Oven.BasesController`. This will automatically setup the CRUD based on your
 recipe.
 
-More info on this to come.
+Your controller can be as simple as:
+
+    <?php
+    App::uses('BasesController', 'Oven.Controller');
+    class PagesController extends BasesController {
+    }
+
+With this, if you go to `example.com/admin/pages` you'll be able to view, add,
+edit and delete your pages. Edit your `Config/oven.json` file to modify the
+schema or fields displayed in the views.
+
+### Views
+
+If you would like to customize the admin views simply set them up as you would
+normally in CakePHP (`app/View/Pages/admin_edit.ctp`). Oven will detect them and
+use yours instead of the core Oven views.
+
+The core Oven view uses view blocks for you to only partially override. For
+instance if you would like to update the sidebar links on `admin_edit`
+simply create a view like this:
+
+    <?php $this->extend('Oven./Admin/edit'); ?>
+    <?php $this->start('sidebar'); ?>
+        <?php echo $this->Html->link('My Custom Link', '/somewhere'); ?>
+    <?php $this->end(); ?>
+
+### Models
+
+It is good practice for your models to extend `OvenBase` but not necessarily
+required:
+
+    <?php
+    App::uses('OvenBase', 'Oven.Model');
+    class Page extends OvenBase {
+    }
+
+This is only required for certain custom fields types such as `file` and `slug`.
+
+### Auth
+
+By default there is no Auth implemented into Oven. Handling Auth should be up
+to you. Although for convenience, if your app uses the
+[CakeDC Users Plugin](https://github.com/CakeDC/users), Oven will automatically
+setup the Auth for you (unless you already have a custom Auth in place).
 
 ## Wishlist
 
