@@ -130,7 +130,7 @@ setup the Auth for you (unless you already have a custom Auth in place).
 * Detect if existing CakePHP with install.sh
 * Use core CakePHP templates as starting point then merge
 * Recipe website to build recipe (use plugins.cakephp.org?) then install it
-* Upgrade default theme to bootstrap 2
+* ~~Upgrade default theme to bootstrap 2~~
 * Put ckeditor field type into it's own repo and use something more lightweight
 * Make a default file manager
 * Multiple recipes
