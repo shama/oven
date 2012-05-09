@@ -121,7 +121,7 @@ class OvenConfig {
 			'oven' => $this->defaults['oven'],
 		), $config);
 		$hideOnIndexTypes = array(
-			'file', 'slug',
+			'file', 'slug', 'password',
 		);
 		foreach ($config['recipe'] as $key => $val) {
 			$config['recipe'][$key] = Set::merge($this->defaults['recipe'], $val);
