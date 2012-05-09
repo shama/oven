@@ -40,31 +40,35 @@ $typeTitle = !empty($typeTitle) ? $typeTitle : $this->name;
 			}
 
 			echo '<div class="actions">';
-				echo $this->Form->submit('Save', array(
-					'class' => 'btn btn-primary',
-					'div' => false,
-				));
-				echo '&nbsp;';
-				$this->Form->unlockField('continue_editing');
-				echo $this->Form->button('Save & Continue Editing', array(
-					'name' => 'continue_editing',
-					'value' => true,
-					'class' => 'btn',
-					'div' => false,
-				));
-				echo '&nbsp;&nbsp;';
-				echo $this->Html->link(
-					__d('oven', 'Cancel', true),
-					array('action' => 'index'),
-					array('class' => 'btn')
-				);
-				$allowDelete = isset($config['allowDelete']) ? $config['allowDelete'] : true;
-				if (!empty($this->request->data[$modelClass]['id']) && $allowDelete) {
+				if ($this->fetch('actions')) {
+					echo $this->fetch('actions');
+				} else {
+					echo $this->Form->submit('Save', array(
+						'class' => 'btn btn-primary',
+						'div' => false,
+					));
+					echo '&nbsp;';
+					$this->Form->unlockField('continue_editing');
+					echo $this->Form->button('Save & Continue Editing', array(
+						'name' => 'continue_editing',
+						'value' => true,
+						'class' => 'btn',
+						'div' => false,
+					));
+					echo '&nbsp;&nbsp;';
 					echo $this->Html->link(
-						__d('oven', 'Delete', true),
-						array('action' => 'delete', $this->request->data[$modelClass]['id']),
-						array('class' => 'btn btn-danger pull-right confirm')
+						__d('oven', 'Cancel', true),
+						array('action' => 'index'),
+						array('class' => 'btn')
 					);
+					$allowDelete = isset($config['allowDelete']) ? $config['allowDelete'] : true;
+					if (!empty($this->request->data[$modelClass]['id']) && $allowDelete) {
+						echo $this->Html->link(
+							__d('oven', 'Delete', true),
+							array('action' => 'delete', $this->request->data[$modelClass]['id']),
+							array('class' => 'btn btn-danger pull-right confirm')
+						);
+					}
 				}
 			echo '</div>';
 			echo $this->Form->end();

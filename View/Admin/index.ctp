@@ -51,21 +51,25 @@ $typeTitle = !empty($typeTitle) ? $typeTitle : $this->name;
 							<td><?php echo substr($item[$modelClass][$key], 0, 255); ?></td>
 						<?php endforeach; ?>
 						<td style="text-align:right;"><?php
-						echo $this->Html->link(
-							__d('oven', 'Edit'),
-							array('action' => 'edit', $item[$modelClass]['id']),
-							array('class' => 'btn btn-small')
-						);
-						echo '&nbsp;';
-						$allowDelete = isset($config['allowDelete']) ? $config['allowDelete'] : true;
-						if ($allowDelete) {
-							echo $this->Html->link(
-								__d('oven', 'Delete'),
-								array('action' => 'delete', $item[$modelClass]['id']),
-								array('class' => 'btn btn-small btn-danger'),
-								__d('oven', 'Are you sure?')
-							);
-						}
+							if ($this->fetch('actions')) {
+								echo $this->fetch('actions');
+							} else {
+								echo $this->Html->link(
+									__d('oven', 'Edit'),
+									array('action' => 'edit', $item[$modelClass]['id']),
+									array('class' => 'btn btn-small')
+								);
+								echo '&nbsp;';
+								$allowDelete = isset($config['allowDelete']) ? $config['allowDelete'] : true;
+								if ($allowDelete) {
+									echo $this->Html->link(
+										__d('oven', 'Delete'),
+										array('action' => 'delete', $item[$modelClass]['id']),
+										array('class' => 'btn btn-small btn-danger'),
+										__d('oven', 'Are you sure?')
+									);
+								}
+							}
 						?></td>
 					</tr>
 				<?php endforeach; ?>
