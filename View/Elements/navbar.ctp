@@ -12,7 +12,7 @@
 				<?php
 				$nav = Configure::read('Oven.config.nav');
 				if (empty($nav)) {
-					$nav = array_keys(Configure::read('Oven.recipe'));
+					$nav = array_keys((array)Configure::read('Oven.recipe'));
 				}
 				?>
 				<?php foreach ($nav as $key => $val): ?>
