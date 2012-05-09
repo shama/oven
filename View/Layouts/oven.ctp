@@ -25,7 +25,7 @@
 	?>
 </head>
 <body>
-<?php echo $this->element('navbar', array('plugin' => 'Oven')); ?>
+<?php echo $this->element('Oven.navbar'); ?>
 <div class="container-fluid">
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $content_for_layout; ?>
