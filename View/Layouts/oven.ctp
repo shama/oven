@@ -4,7 +4,11 @@
 	<?php
 	echo $this->Html->charset();
 	echo $this->Html->meta('icon');
-	echo '<link rel="stylesheet/less" type="text/css" href="/cloudtop/oven/less/bootstrap.less" />';
+	echo $this->Html->css(
+		'/oven/less/bootstrap.less',
+		'stylesheet/less',
+		array('ext' => false)
+	);
 	echo $this->Html->script(array(
 		'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
 		'/oven/bootstrap/js/bootstrap-transition',
