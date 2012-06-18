@@ -1,0 +1,18 @@
+{
+	"name": "shama/oven",
+	"type": "library",
+	"license": "MIT",
+	"description": "A CakePHP 2 Re-Baker and CMS Plugin",
+	"keywords": ["cakephp", "cms", "baker"],
+	"authors": [
+		{
+			"name": "Kyle Robinson Young",
+			"email": "kyle@dontkry.com",
+			"homepage": "https://github.com/shama"
+		}
+	],
+	"require": {
+		"php": ">=5.3",
+		"shama/baton": "*"
+	}
+}
