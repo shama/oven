@@ -21,10 +21,10 @@ class SlugBehavior extends ModelBehavior {
  * setup
  *
  * @param object $model
- * @param array $settings
+ * @param array $config
  * @return void
  */
-	public function setup(&$model, $settings = array()) {
+	public function setup(Model $model, $config = array()) {
 		$recipe = Configure::read('Oven.recipe');
 		if (!empty($recipe)) {
 			foreach ($recipe as $key => $type) {
@@ -45,7 +45,7 @@ class SlugBehavior extends ModelBehavior {
 			}
 		}
 		$this->settings['slugFromField'] = $model->displayField;
-		$this->settings = Set::merge($this->settings, $settings);
+		$this->settings = Set::merge($this->settings, $config);
 	}
 
 /**
@@ -53,7 +53,7 @@ class SlugBehavior extends ModelBehavior {
  * @param Object $model
  * @return boolean
  */
-	public function beforeSave(&$model) {
+	public function beforeSave(Model $model) {
 		$fields = !empty($this->settings['slugFields'][$model->alias]) ? $this->settings['slugFields'][$model->alias] : array();
 		foreach ($model->data[$model->alias] as $key => $val) {
 			if (in_array($key, $fields) && empty($val)) {

@@ -37,10 +37,10 @@ class UploadBehavior extends ModelBehavior {
  * setup
  *
  * @param Model $Model
- * @param array $settings
+ * @param array $config
  * @return void
  */
-	public function setup($Model, $settings = array()) {
+	public function setup(Model $Model, $config = array()) {
 		$recipe = Configure::read('Oven.recipe');
 		if (!empty($recipe)) {
 			foreach ($recipe as $key => $type) {
@@ -60,16 +60,16 @@ class UploadBehavior extends ModelBehavior {
 				}
 			}
 		}
-		if (empty($settings['uploadLocation'])) {
-			$settings['uploadLocation'] = Configure::read('Oven.config.upload_location');
-			if (empty($settings['uploadLocation'])) {
-				$settings['uploadLocation'] = WWW_ROOT . 'files' . DS . 'uploads' . DS;
+		if (empty($config['uploadLocation'])) {
+			$config['uploadLocation'] = Configure::read('Oven.config.upload_location');
+			if (empty($config['uploadLocation'])) {
+				$config['uploadLocation'] = WWW_ROOT . 'files' . DS . 'uploads' . DS;
 			}
 		}
-		if (!file_exists($settings['uploadLocation'])) {
-			new Folder($settings['uploadLocation'], true);
+		if (!file_exists($config['uploadLocation'])) {
+			new Folder($config['uploadLocation'], true);
 		}
-		$this->settings = Set::merge($this->settings, $settings);
+		$this->settings = Set::merge($this->settings, $config);
 	}
 
 /**
@@ -78,7 +78,7 @@ class UploadBehavior extends ModelBehavior {
  * @param Model $Model
  * @return boolean
  */
-	public function beforeSave($Model) {
+	public function beforeSave(Model $Model) {
 		if ($this->_saving) {
 			return true;
 		}
@@ -99,7 +99,7 @@ class UploadBehavior extends ModelBehavior {
  * @param Model $Model
  * @param boolean $created
  */
-	public function afterSave($Model, $created) {
+	public function afterSave(Model $Model, $created) {
 		if ($this->_saving) {
 			return true;
 		}
