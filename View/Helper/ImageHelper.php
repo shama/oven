@@ -60,7 +60,7 @@ class ImageHelper extends AppHelper {
 			return '';
 		}
 		$this->_default($opts);
-		if ($src[0] !== '/') {
+		if ($src{0} !== '/') {
 			$src = $this->settings['imagePath'] . $src;
 		}
 		if (!file_exists($src)) {
