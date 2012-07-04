@@ -24,7 +24,6 @@
 		'/oven/bootstrap/js/bootstrap-carousel',
 		'/oven/bootstrap/js/bootstrap-typeahead',
 		'/oven/js/less-1.3.0.min',
-		'/oven/js/admin',
 	));
 	?>
 </head>
