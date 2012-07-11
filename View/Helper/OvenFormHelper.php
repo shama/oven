@@ -89,10 +89,6 @@ class OvenFormHelper extends FormHelper {
 			switch ($opts['type']) {
 				case 'ckeditor':
 					$opts['type'] = 'textarea';
-					$this->_View->loadHelper('Oven.Ckeditor');
-					echo $this->_View->Ckeditor->replace($this->domId($fieldName), array(
-						'path' => '/oven/js/',
-					));
 				break;
 				case 'boolean':
 					$opts['type'] = 'radio';
