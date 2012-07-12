@@ -29,8 +29,13 @@ your current working folder.
 
 ### Manual Install
 
-If that doesn't work then just download or `git clone` this into the
-`app/Plugin/Oven` folder in a CakePHP 2 app. Enable the plugin in
+If that doesn't work or if you prefer manual labor then just download or...
+
+```
+git clone git://github.com/shama/oven.git Plugin/Oven && cd Plugin/Oven && git submodule update --init
+```
+
+in a CakePHP 2.x app. Enable the plugin in
 `app/Config/bootstrap.php` and run the command `./Console/cake oven.init`.
 
 ## Usage
